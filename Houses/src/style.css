@@ -31,6 +31,18 @@ body {
     padding: 0;
 }
 
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+    padding: 5px 10px; /* Add some padding to the links */
+}
+
+.nav-link.active {
+    color: #007bff; /* Change color for active link */
+}
+
 .nav-links li a {
     text-decoration: none;
     color: #333;
