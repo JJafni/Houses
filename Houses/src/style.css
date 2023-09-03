@@ -2,12 +2,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 50vh;
-    background-color: #f0f0f0;
 }
+
 .navbar {
     background-color: white;
     position: fixed;
@@ -21,6 +17,7 @@ body {
     padding: 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    
 }
 
 .logo img {
@@ -58,39 +55,62 @@ body {
     color: #007bff;
 }
 
-
 .card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    border: 0px solid #ccc; /* Add a border to the card */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px; /* Add border radius */
     display: flex;
-   
-    
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px; /* Adjust the margin to create space below the search bar */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    position: relative; /* Add relative positioning to the search bar container */
+    z-index: 2; /* Add a higher z-index to make it appear above the card */
+}
+
+.search-box {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
 }
 
 .card-image {
-    flex: 1;
+    flex: 0;
 }
 
 .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+   border-radius: 6px;
+   margin: 10px;
 }
 
 .card-content {
     flex: 2;
     padding: 20px;
+    text-align: center;
 }
 
-.card-content h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #333;
-}
-
-.card-content p {
-    margin-top: 10px;
-    color: #777;
-}
