@@ -74,11 +74,28 @@ body {
     margin-top: 20px; /* Adjust the margin to create space below the search bar */
 }
 
-.center-container {
+.card-content {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Makes the container take up the full viewport height */
+    flex-direction: row;
+}
+
+.street {
+    font-size: 28px;
+    margin-top: 0;
+}
+
+.card-image {
+    margin-right: 10px; /* Add space between image and details */
+}
+
+.details-container {
+    flex: 1; /* Allow details container to grow and take available space */
+}
+
+/* Style for the card title */
+h2 {
+    font-size: 20px;
+    margin: 0;
 }
 
 .search-button-container {
@@ -119,27 +136,32 @@ body {
 }
 
 
-.button1 {
+.filter-button {
     padding: 10px 20px;
     background-color: #e85444;
     color: #fff;
     border: none;
-    border-radius: 5px 0px 0px 5px;
     font-size: 16px;
     font-family: myFont;
     cursor: pointer;
 }
 
-.button2 {
-    padding: 10px 20px;
-    background-color: #e85444;
-    color: #fff;
-    border: none;
-    border-radius: 0px 5px 5px 0px;
-    font-size: 16px;
-    font-family: myFont;
-    cursor: pointer;
+.filter-button.active {
+    background-color: #0056b3; /* Change color for active filter button */
 }
+
+.filter-content {
+    margin-top: 20px;
+}
+
+.filter-item {
+    display: none;
+}
+
+.filter-item.active {
+    display: block;
+}
+
 
 .card-image {
     flex: 0;

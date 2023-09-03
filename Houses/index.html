@@ -24,23 +24,42 @@
       <input type="text" class="search-box" placeholder="Search for a house">
     </div>
     <div class="button-container">
-        <button class="button1">Price</button>
-        <button class="button2">Size</button>
-    </div>
+      <button class="filter-button button1" data-filter="filter1">Price</button>
+      <button class="filter-button button2" data-filter="filter2">Size</button>
+  </div>
+  <div class="filter-content">
+      <!-- Content to be filtered goes here -->
+      <div class="filter-item" data-category="filter1">Content for Filter 1</div>
+      <div class="filter-item" data-category="filter2">Content for Filter 2</div>
+  </div>
+  
 </div>
 
 
   <div class="centered-content">
     
-  <div class="card">
-    <div class="card-image">
-        <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Card Image" style="width: 200px;">
-    </div>
-    <div class="card-content">
-        <h2>Card Title</h2>
-        <p>This is the content of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-    </div>
+    <div class="card">
+  
+    
+      <div class="card-image">
+          <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Card Image" style="width: 200px;">
+      </div>
+      <div class="card-content">
+        <div class="card-location"></div>
+          <p class="street">TestStreet</p>
+          <p>12345 Amsterdam</p>
+          </div>
+          <div class="details-container">
+            <h2>Card Title</h2>
+         
+            <p class="city">City: </p>
+            <p class="zip">Postal Code: </p>
+
+        </div>
+      </div>
+  </div>
+  
+  
     </div>
     
     <script type="module" src="/src/main.js"></script>
