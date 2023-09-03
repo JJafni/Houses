@@ -9,11 +9,17 @@ fetch('https://api.intern.d-tt.nl/api/houses', options)
     .then(response => response.json())
     .then(response => {
         console.log(response);
+        const price = response[1].price;
 
+        const formattedPrice = price.toLocaleString('en-US');
         // Assuming there's an HTML element with class "street"
-        document.querySelector(".street").textContent = `Street: ${response[1].street}`;
-        document.querySelector(".city").textContent = `City: ${response[1].location.city}`;
-        document.querySelector(".zip").textContent = `Postal Code: ${response[1].zip}`;
+        document.querySelector(".street").textContent = `${response[1].location.street}`;
+        document.querySelector(".city").textContent = `${response[1].location.city}`;
+        document.querySelector(".zip").textContent = `${response[1].location.zip}`;
+        document.querySelector(".price").textContent = `€${response[1].price}`;
+        document.querySelector(".price").textContent = `€${formattedPrice}`;
+        document.querySelector(".bedrooms").textContent = `${response[1].rooms.bedrooms} bedrooms`;
+        document.querySelector(".bathrooms").textContent = `${response[1].rooms.bathrooms} bathrooms`;
         //document.querySelector(".constructionYear").textContent = `Construction Year: ${response[1].constructionYear}`;
         //document.querySelector(".description").textContent = `Description: ${response[1].description}`;
         
