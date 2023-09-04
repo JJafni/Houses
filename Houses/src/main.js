@@ -30,7 +30,7 @@ fetch('https://api.intern.d-tt.nl/api/houses', options)
         console.error('There was an error:', error);
     });
 
-    // Get references to the form and house list
+  // Get references to the form and house list
 const houseForm = document.getElementById('house-form');
 const houseList = document.getElementById('house-list');
 
@@ -56,26 +56,59 @@ houseForm.addEventListener('submit', function (e) {
         bathrooms,
     };
 
-    // Add the new house to the list
+    // Add the new house to local storage
+    saveHouse(newHouse);
+
+    // Display the house
     displayHouse(newHouse);
 
     // Clear the form
     houseForm.reset();
 });
 
+// Function to save a house to local storage
+function saveHouse(house) {
+    // Check if local storage is supported
+    if (typeof Storage !== 'undefined') {
+        // Retrieve existing data from local storage or initialize an empty array
+        let houses = JSON.parse(localStorage.getItem('houses')) || [];
+
+        // Add the new house to the array
+        houses.push(house);
+
+        // Save the updated array back to local storage
+        localStorage.setItem('houses', JSON.stringify(houses));
+    }
+}
+
+// Function to display houses from local storage
+function displayHousesFromLocalStorage() {
+    // Check if local storage is supported
+    if (typeof Storage !== 'undefined') {
+        // Retrieve stored houses from local storage
+        const houses = JSON.parse(localStorage.getItem('houses'));
+
+        // Display each house
+        if (houses) {
+            houses.forEach(displayHouse);
+        }
+    }
+}
+
+// Display houses from local storage when the page loads
+window.addEventListener('load', displayHousesFromLocalStorage);
+
 // Function to display a house item in the list
 function displayHouse(house) {
-    const listItem = document.createElement('li');
+    const listItem = document.createElement('p');
     listItem.innerHTML = `
         ${house.street}<br>
-        ${house.city}<br>
-        ${house.zip}<br>
-        ${house.price}<br>
-        ${house.bedrooms}<br>
-        ${house.bathrooms}<br>
+      
     `;
     houseList.appendChild(listItem);
 }
+
+
 
 
 // Add this script if you want to highlight the active link using JavaScript
