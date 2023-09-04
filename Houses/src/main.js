@@ -30,6 +30,54 @@ fetch('https://api.intern.d-tt.nl/api/houses', options)
         console.error('There was an error:', error);
     });
 
+    // Get references to the form and house list
+const houseForm = document.getElementById('house-form');
+const houseList = document.getElementById('house-list');
+
+// Listen for form submission
+houseForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Get form input values
+    const street = document.getElementById('street').value;
+    const city = document.getElementById('city').value;
+    const zip = document.getElementById('zip').value;
+    const price = document.getElementById('price').value;
+    const bedrooms = document.getElementById('bedrooms').value;
+    const bathrooms = document.getElementById('bathrooms').value;
+
+    // Create a new house object
+    const newHouse = {
+        street,
+        city,
+        zip,
+        price,
+        bedrooms,
+        bathrooms,
+    };
+
+    // Add the new house to the list
+    displayHouse(newHouse);
+
+    // Clear the form
+    houseForm.reset();
+});
+
+// Function to display a house item in the list
+function displayHouse(house) {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+        ${house.street}<br>
+        ${house.city}<br>
+        ${house.zip}<br>
+        ${house.price}<br>
+        ${house.bedrooms}<br>
+        ${house.bathrooms}<br>
+    `;
+    houseList.appendChild(listItem);
+}
+
+
 // Add this script if you want to highlight the active link using JavaScript
 document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll(".nav-link");

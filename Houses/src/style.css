@@ -24,7 +24,6 @@ body {
     padding: 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    
 }
 
 .logo img {
@@ -69,14 +68,23 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 0px;
     width: 50%;
     margin: 0 auto;
     margin-top: 20px; /* Adjust the margin to create space below the search bar */
 }
 
-.card-content {
+.card-2 {
+    border: 0px solid #ccc; /* Add a border to the card */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px; /* Add border radius */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 100px; /* Adjust the margin to create space below the search bar */
 }
 
 .street {
@@ -183,4 +191,11 @@ h2 {
     padding: 20px;
     text-align: center;
 }
+
+.card-content-2 {
+    flex: 2;
+    padding: 20px;
+    text-align: center;
+}
+
 
