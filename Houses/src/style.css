@@ -5,11 +5,16 @@ body {
     font-weight: lighter;
 }
 
+
 @font-face {
     font-family: myFont;
     src: url(artegra-sans-alt-bold.otf);
 }
 
+a {
+    text-decoration: none; /* Remove the underline */
+    color: #333; /* Change the link color to your preferred color */
+}
 
 .navbar {
     background-color: white;

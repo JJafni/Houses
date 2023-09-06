@@ -15,29 +15,33 @@ fetch('https://api.intern.d-tt.nl/api/houses', options)
         function generateCards(data) {
             const cardContainer = document.getElementById("card-container");
 
-            data.forEach((property) => {
-                const card = document.createElement("div");
-                card.className = "card";
+          // Inside the generateCards function
+data.forEach((property, index) => {
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = `detail.html?propertyIndex=${index}`; // Set the href attribute for the entire card
 
-                // Set the content for each card based on the property data
-                card.innerHTML = `
-                    <div class="card-image">
-                        <img src="${property.image}" alt="Card Image" style="width: 200px;">
-                    </div>
-                    <div class="card-content">
-                        <p class="street">${property.location.street}</p>
-                        <p class="price">€${property.price.toLocaleString('en-US')}</p>
-                    </div>
-                    <div class="details-container">
-                        <p class="city">${property.location.city}</p>
-                        <p class="zip">${property.location.zip}</p>
-                        <p class="bedrooms">${property.rooms.bedrooms} bedrooms</p>
-                        <p class="bathrooms">${property.rooms.bathrooms} bathrooms</p>
-                    </div>
-                `;
+    card.innerHTML = `
+        <div class="card-image">
+            <img src="${property.image}" alt="Card Image" style="width: 200px;">
+        </div>
+        <div class="card-content">
+            <p class="street">${property.location.street}</p>
+            <p class="price">€${property.price.toLocaleString('en-US')}</p>
+        </div>
+        <div class="details-container">
+            <p class="city">${property.location.city}</p>
+            <p class="zip">${property.location.zip}</p>
+            <p class="bedrooms">${property.rooms.bedrooms} bedrooms</p>
+            <p class="bathrooms">${property.rooms.bathrooms} bathrooms</p>
+        </div>
+    `;
 
-                cardContainer.appendChild(card);
-            });
+    cardContainer.appendChild(card);
+});
+
+
+            
         }
 
         // Call the function to generate the cards with API response data
