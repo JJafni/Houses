@@ -92,7 +92,18 @@ body {
     margin-top: 0;
 }
 
+#street {
+    font-size: 24px;
+    margin-top: 0;
+}
+
 .price {
+    font-size: 20px;
+    margin: 0;
+    font-style: italic;
+}
+
+#price {
     font-size: 20px;
     margin: 0;
     font-style: italic;
@@ -175,11 +186,8 @@ h2 {
 .filter-item.active {
     display: block;
 }
+ 
 
-
-.card-image {
-    flex: 0;
-}
 
 .card-image img {
    border-radius: 6px;

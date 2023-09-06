@@ -8,31 +8,65 @@ const options = {
 fetch('https://api.intern.d-tt.nl/api/houses', options)
     .then(response => response.json())
     .then(response => {
+        // Assuming response is an array of property objects
         console.log(response);
-        const price = response[1].price;
 
-        const formattedPrice = price.toLocaleString('en-US');
-        // Assuming there's an HTML element with class "street"
-        document.querySelector(".street").textContent = `${response[1].location.street}`;
-        document.querySelector(".city").textContent = `${response[1].location.city}`;
-        document.querySelector(".zip").textContent = `${response[1].location.zip}`;
-        document.querySelector(".price").textContent = `€${response[1].price}`;
-        document.querySelector(".price").textContent = `€${formattedPrice}`;
-        document.querySelector(".bedrooms").textContent = `${response[1].rooms.bedrooms} bedrooms`;
-        document.querySelector(".bathrooms").textContent = `${response[1].rooms.bathrooms} bathrooms`;
-        //document.querySelector(".constructionYear").textContent = `Construction Year: ${response[1].constructionYear}`;
-        //document.querySelector(".description").textContent = `Description: ${response[1].description}`;
-        
-        // Set the image source
-        document.querySelector(".card-image img").src = response[1].image;
+        // Function to generate cards from the API response data
+        function generateCards(data) {
+            const cardContainer = document.getElementById("card-container");
+
+            data.forEach((property) => {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                // Set the content for each card based on the property data
+                card.innerHTML = `
+                    <div class="card-image">
+                        <img src="${property.image}" alt="Card Image" style="width: 200px;">
+                    </div>
+                    <div class="card-content">
+                        <p class="street">${property.location.street}</p>
+                        <p class="price">€${property.price.toLocaleString('en-US')}</p>
+                    </div>
+                    <div class="details-container">
+                        <p class="city">${property.location.city}</p>
+                        <p class="zip">${property.location.zip}</p>
+                        <p class="bedrooms">${property.rooms.bedrooms} bedrooms</p>
+                        <p class="bathrooms">${property.rooms.bathrooms} bathrooms</p>
+                    </div>
+                `;
+
+                cardContainer.appendChild(card);
+            });
+        }
+
+        // Call the function to generate the cards with API response data
+        generateCards(response);
     })
     .catch(error => {
-        console.error('There was an error:', error);
+        console.error("Error fetching data:", error);
     });
+
+
+
+    
 
   // Get references to the form and house list
 const houseForm = document.getElementById('house-form');
-const houseList = document.getElementById('house-list');
+const streetList = document.getElementById('street-list');
+const priceList = document.getElementById('price-list');
+const cityList = document.getElementById('city-list');
+const zipList = document.getElementById('zip-list');
+const bedroomsList = document.getElementById('bedrooms-list');
+const bathroomsList = document.getElementById('bathrooms-list');
+
+
+
+
+
+
+
+
 
 // Listen for form submission
 houseForm.addEventListener('submit', function (e) {
@@ -98,17 +132,23 @@ function displayHousesFromLocalStorage() {
 // Display houses from local storage when the page loads
 window.addEventListener('load', displayHousesFromLocalStorage);
 
+
+
+
+
 // Function to display a house item in the list
 function displayHouse(house) {
     const listItem = document.createElement('p');
     listItem.innerHTML = `
-        ${house.street}<br>
+        ${house.street}
+        ${house.city}
+        ${house.zip}
+        ${house.price}
       
     `;
-    houseList.appendChild(listItem);
+    streetList.appendChild(listItem);
+    
 }
-
-
 
 
 // Add this script if you want to highlight the active link using JavaScript
