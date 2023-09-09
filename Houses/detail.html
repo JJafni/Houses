@@ -5,31 +5,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/src/style.css" />
-    <link rel="stylesheet" href="/src/detail.css" />
+    
     <title>House Details</title>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="index.html">
-          <img
-            src="https://www.d-tt.nl/assets/site/images/dtt_logo_color.svg"
-            alt="Logo"
-          />
-        </a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#houses" class="nav-link">Houses</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-      </ul>
-    </nav>
-
-    <h1>House Details</h1>
+    <div class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img
+                    src="https://www.d-tt.nl/assets/site/images/dtt_logo_color.svg"
+                    alt="Logo"
+                />
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#houses" class="nav-link">Houses</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+        </ul>
+    </div>
+    
+    <div class="back-home-container">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 small-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        <a class="back-home" href="index.html">Back to Home</a>
+    </div>
+    
     <!-- detail.html -->
     <div id="detail-container"></div>
     <!-- Add more placeholders for other details -->
 
-    <a href="index.html">Back to Home</a>
+    
 
     <script type="module" src="/src/main.js"></script>
   </body>
