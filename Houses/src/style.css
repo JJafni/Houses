@@ -5,15 +5,14 @@ body {
     font-weight: lighter;
 }
 
-
 @font-face {
     font-family: myFont;
     src: url(artegra-sans-alt-bold.otf);
 }
 
 a {
-    text-decoration: none; /* Remove the underline */
-    color: #333; /* Change the link color to your preferred color */
+    text-decoration: none;
+    color: #333;
 }
 
 .navbar {
@@ -31,12 +30,8 @@ a {
     z-index: 1000;
 }
 
-.logo{
-    align-content: center;
-}
-
 .logo img {
-    height: 40px; /* Adjust size as needed */
+    height: 40px;
 }
 
 .back-home-container {
@@ -46,20 +41,17 @@ a {
     margin-left: 20px;
 }
 
-/* Style for the arrow icon */
 .small-icon {
     width: 26px;
     height: 26px;
-    margin-right: 8px; /* Adjust spacing between icon and text */
+    margin-right: 8px;
     color: grey;
 }
 
-/* Style for the "Back to Home" link */
 .back-home {
-    color: #000; /* Text color for the link */
+    color: #000;
     text-decoration: none;
 }
-
 
 .nav-links {
     list-style: none;
@@ -67,21 +59,21 @@ a {
     margin: 0;
     padding: 0;
 }
+
 .nav-links li {
     margin-right: 20px;
 }
-
 
 .nav-link {
     text-decoration: none;
     color: #333;
     font-weight: bold;
     transition: color 0.3s;
-    padding: 5px 10px; /* Add some padding to the links */
+    padding: 5px 10px;
 }
 
 .nav-link.active {
-    color: #007bff; /* Change color for active link */
+    color: #007bff;
 }
 
 .nav-links li a {
@@ -96,43 +88,44 @@ a {
 }
 
 .card {
-    border: 0px solid #ccc; /* Add a border to the card */
+    border: 0px solid #ccc;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 5px; /* Add border radius */
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0px;
     width: 50%;
     margin: 0 auto;
-    margin-top: 20px; /* Adjust the margin to create space below the search bar */
+    margin-top: 20px;
 }
 
 .card-2 {
-    border: 0px solid #ccc; /* Add a border to the card */
+    border: 0px solid #ccc;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 5px; /* Add border radius */
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0px;
     width: 50%;
     margin: 0 auto;
-    margin-top: 100px; /* Adjust the margin to create space below the search bar */
+    margin-top: 100px;
 }
 
 .card-3 {
-    border: 0px solid #ccc; /* Add a border to the card */
+    border: 0px solid #ccc;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 5px; /* Add border radius */
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0px;
     width: 50%;
     margin: 0 auto;
-    margin-top: 100px; /* Adjust the margin to create space below the search bar */
+    margin-top: 100px;
 }
+
 .street {
     font-size: 24px;
     margin-top: 0;
@@ -160,14 +153,11 @@ a {
     display: flex;
 }
 
-
-
-
 .card-container {
     display: flex;
-    flex-direction: row; /* Stack elements vertically */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     width: 70%;
     margin: 40px;
     padding: 20px;
@@ -178,22 +168,17 @@ a {
 }
 
 .card-image-2 img {
-    max-width: 100%; /* Ensure the image doesn't exceed the container's width */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 10px; /* Add some space between the image and description */
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card-description {
-    max-width: 25%; /* Allow description to take full container width */
-    text-align: center; /* Center text horizontally */
+    max-width: 25%;
+    text-align: center;
 }
-
-
-
-
-
 
 .card-content {
     width: 10%;
@@ -202,7 +187,7 @@ a {
 }
 
 .location {
-    display: flex; /* Display city and zip side by side */
+    display: flex;
     justify-content: center;
     align-content: center;
     gap: 10px;
@@ -211,15 +196,12 @@ a {
 }
 
 .price-container {
-    display: flex; /* Display city and zip side by side */
+    display: flex;
     justify-content: center;
     gap: 10px;
     width: 100%;
     padding: 10px;
 }
-
-
-
 
 .card-content {
     padding: 10px;
@@ -253,13 +235,10 @@ a {
     color: #333;
 }
 
-
-
 .details-container {
-    flex: 1; /* Allow details container to grow and take available space */
+    flex: 1;
 }
 
-/* Style for the card title */
 h2 {
     font-size: 20px;
     margin: 0;
@@ -267,7 +246,7 @@ h2 {
 
 .search-button-container {
     display: flex;
-    flex-direction: row; /* Display search bar and buttons side by side */
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
@@ -276,7 +255,7 @@ h2 {
 .search-bar {
     display: flex;
     align-items: center;
-    margin-right: 10px; /* Add space between the search bar and buttons */
+    margin-right: 10px;
 }
 
 .search-box {
@@ -288,9 +267,9 @@ h2 {
     background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"%3E%3Cpath strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /%3E%3C/svg%3E');
     background-repeat: no-repeat;
     background-color: #f0ecec;
-    background-size: 20px; /* Adjust the size of the SVG icon */
-    background-position: 10px center; /* Adjust the position of the SVG icon on the left */
-    padding-left: 40px; /* Adjust the padding to make room for the SVG icon */
+    background-size: 20px;
+    background-position: 10px center;
+    padding-left: 40px;
 }
 
 .search-box:focus {
@@ -301,7 +280,6 @@ h2 {
     display: flex;
     align-items: center;
 }
-
 
 .filter-button {
     padding: 10px 20px;
@@ -314,7 +292,7 @@ h2 {
 }
 
 .filter-button.active {
-    background-color: #0056b3; /* Change color for active filter button */
+    background-color: #0056b3;
 }
 
 .filter-content {
@@ -328,8 +306,6 @@ h2 {
 .filter-item.active {
     display: block;
 }
- 
-
 
 .card-image img {
    border-radius: 6px;
@@ -347,5 +323,3 @@ h2 {
     padding: 20px;
     text-align: center;
 }
-
-
