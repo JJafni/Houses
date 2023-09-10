@@ -144,10 +144,70 @@ a {
 }
 
 .card-image {
-    margin-right: 10px; /* Add space between image and details */
     justify-content: center;
     display: flex;
 }
+
+
+
+
+.card-container {
+    display: flex;
+    flex-direction: row; /* Stack elements vertically */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 50%;
+    margin: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    gap: 20px;
+}
+
+.card-image-2 img {
+    max-width: 100%; /* Ensure the image doesn't exceed the container's width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add some space between the image and description */
+}
+
+.card-description {
+    max-width: 50%; /* Allow description to take full container width */
+    text-align: center; /* Center text horizontally */
+}
+
+
+
+
+
+
+.card-content {
+    width: 10%;
+    padding: 10px;
+    font-weight: lighter;
+}
+
+.location {
+    display: flex; /* Display city and zip side by side */
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.price-container {
+    display: flex; /* Display city and zip side by side */
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+
+
+
+
 
 .details-container {
     flex: 1; /* Allow details container to grow and take available space */

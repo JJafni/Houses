@@ -79,26 +79,38 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
     // Display the card's details on the page
     const detailContainer = document.getElementById("detail-container");
     detailContainer.innerHTML = `
-    <div class="card-image">
-        <img src="${
-          property.image
-        }" alt="Card Image" style="width: 600px; margin: 50px">
+    
+    <div class="card-container">
+    <div class="card-image-2">
+        <img src="${property.image}" alt="Card Image">
     </div>
+    <div class="card-description">
+        ${property.description}
+    </div>
+</div>
+
+
+
     <div class="card-content">
         <p class="street">${property.location.street}</p>
+        <div class="location">
+            <p class="zip">${property.location.zip}</p>
+            <p class="city">${property.location.city}</p>
         </div>
-
-         <div>
-         <p class="city">${property.location.city}</p>
+        <div class="price-container">
+            <p class="price">€${property.price.toLocaleString("en-US")}</p>
+            <p class="size">${property.size} m2</p>
+            <p class="size">${property.constructionYear}</p>
         </div>
-
-        <p class="price">€${property.price.toLocaleString("en-US")}</p>
-    <div class="details-container">
-        
-        <p class="zip">${property.location.zip}</p>
-        <p class="bedrooms">${property.rooms.bedrooms} bedrooms</p>
-        <p class="bathrooms">${property.rooms.bathrooms} bathrooms</p>
+        <div class="details-container">
+            <p class="bedrooms">${property.rooms.bedrooms} bedrooms</p>
+            <p class="bathrooms">${property.rooms.bathrooms} bathrooms</p>
+        </div>
     </div>
+
+</div>
+
+
 
 `;
   })
