@@ -81,34 +81,36 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
     detailContainer.innerHTML = `
     
     <div class="card-container">
+    <!-- Card containing property image and description -->
     <div class="card-image-2">
         <img src="${property.image}" alt="Card Image">
     </div>
     <div class="card-description">
         ${property.description}
     </div>
-</div>
 
 
-
+<!-- Card containing property details -->
+<div class="card">
     <div class="card-content">
-        <p class="street">${property.location.street}</p>
-        <div class="location">
-            <p class="zip">${property.location.zip}</p>
-            <p class="city">${property.location.city}</p>
+        <p class="property-street">${property.location.street}</p>
+        <div class="property-location">
+            <p class="property-zip">${property.location.zip}</p>
+            <p class="property-city">${property.location.city}</p>
         </div>
-        <div class="price-container">
-            <p class="price">€${property.price.toLocaleString("en-US")}</p>
-            <p class="size">${property.size} m2</p>
-            <p class="size">${property.constructionYear}</p>
+        <div class="property-price-container">
+            <p class="property-price">€${property.price.toLocaleString("en-US")}</p>
+            <p class="property-size">${property.size} m2</p>
+            <p class="property-construction-year">${property.constructionYear}</p>
         </div>
-        <div class="details-container">
-            <p class="bedrooms">${property.rooms.bedrooms} bedrooms</p>
-            <p class="bathrooms">${property.rooms.bathrooms} bathrooms</p>
+        <div class="property-details-container">
+            <p class="property-bedrooms">${property.rooms.bedrooms} bedrooms</p>
+            <p class="property-bathrooms">${property.rooms.bathrooms} bathrooms</p>
         </div>
     </div>
-
 </div>
+
+
 
 
 
