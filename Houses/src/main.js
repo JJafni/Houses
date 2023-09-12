@@ -48,17 +48,57 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
     console.error("Error fetching data:", error);
   });
 
-// Get references to the form and house list
-const houseForm = document.getElementById("house-form");
-const streetList = document.getElementById("street-list");
-const priceList = document.getElementById("price-list");
-const cityList = document.getElementById("city-list");
-const zipList = document.getElementById("zip-list");
-const bedroomsList = document.getElementById("bedrooms-list");
-const bathroomsList = document.getElementById("bathrooms-list");
 
-// Inside detail.html
-// Inside the detail.html page JavaScript
+
+// Add an event listener to the filter buttons
+const filterButtons = document.querySelectorAll(".filter-button");
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filterCriteria = button.getAttribute("data-filter");
+    sortCards(filterCriteria);
+  });
+});
+
+// Function to sort the cards based on the selected criteria
+function sortCards(criteria) {
+  const cardContainer = document.getElementById("card-container");
+  const cards = Array.from(cardContainer.querySelectorAll(".card"));
+
+  // Sort the cards based on the criteria
+  cards.sort((a, b) => {
+    const cardAValue = parseInt(a.querySelector(`.card-content .${criteria}`).textContent.replace(/\D/g, ""), 10);
+    const cardBValue = parseInt(b.querySelector(`.card-content .${criteria}`).textContent.replace(/\D/g, ""), 10);
+
+    // Compare the card values based on the criteria
+    if (criteria === "price") {
+      return cardBValue - cardAValue; // Sort by descending price
+    } else if (criteria === "size") {
+      return cardBValue - cardAValue; // Sort by descending size
+    }
+  });
+
+  // Clear the card container
+  cardContainer.innerHTML = "";
+
+  // Append the sorted cards back to the container
+  cards.forEach((card) => {
+    cardContainer.appendChild(card);
+  });
+}
+
+// Initial loading of cards
+fetch("https://api.intern.d-tt.nl/api/houses", options)
+  .then((response) => response.json())
+  .then((response) => {
+    generateCards(response);
+
+    // Call this function to initially display cards based on the default criteria
+    sortCards("price"); // Sort by price initially
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
+
 
 // Function to get the value of a query parameter by its name
 function getQueryParam(parameterName) {
@@ -91,7 +131,7 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
 
 
 <!-- Card containing property details -->
-<div class="card">
+<div class="card-2">
     <div class="card-content">
         <p class="property-street">${property.location.street}</p>
         <div class="property-location">
@@ -209,28 +249,3 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const filterButtons = document.querySelectorAll(".filter-button");
-const filterItems = document.querySelectorAll(".filter-item");
-
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    // Remove 'active' class from all filter buttons
-    filterButtons.forEach((btn) => btn.classList.remove("active"));
-
-    // Add 'active' class to the clicked button
-    button.classList.add("active");
-
-    // Get the filter category from the 'data-filter' attribute
-    const filterCategory = button.getAttribute("data-filter");
-
-    // Show/hide filter items based on the filter category
-    filterItems.forEach((item) => {
-      const itemCategory = item.getAttribute("data-category");
-      if (itemCategory === filterCategory) {
-        item.classList.add("active");
-      } else {
-        item.classList.remove("active");
-      }
-    });
-  });
-});
