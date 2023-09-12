@@ -50,11 +50,42 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
 
 
 
+
+
+
+// Inside your JavaScript code
+
+let sortByPriceAscending = true; // Track the current sorting order for price
+let sortBySizeAscending = true; // Track the current sorting order for size
+
 // Add an event listener to the filter buttons
 const filterButtons = document.querySelectorAll(".filter-button");
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const filterCriteria = button.getAttribute("data-filter");
+
+    if (filterCriteria === "price") {
+      // Toggle the sorting order for price
+      sortByPriceAscending = !sortByPriceAscending;
+
+      // Update the button text to indicate the sorting order
+      if (sortByPriceAscending) {
+        button.textContent = "Sort by Price (OFF)";
+      } else {
+        button.textContent = "Sort by Price (ON)";
+      }
+    } else if (filterCriteria === "size") {
+      // Toggle the sorting order for size
+      sortBySizeAscending = !sortBySizeAscending;
+
+      // Update the button text to indicate the sorting order
+      if (sortBySizeAscending) {
+        button.textContent = "Sort by Size (OFF)";
+      } else {
+        button.textContent = "Sort by Size (ON)";
+      }
+    }
+
     sortCards(filterCriteria);
   });
 });
@@ -71,9 +102,17 @@ function sortCards(criteria) {
 
     // Compare the card values based on the criteria
     if (criteria === "price") {
-      return cardBValue - cardAValue; // Sort by descending price
+      if (sortByPriceAscending) {
+        return cardAValue - cardBValue; // Sort by ascending price
+      } else {
+        return cardBValue - cardAValue; // Sort by descending price
+      }
     } else if (criteria === "size") {
-      return cardBValue - cardAValue; // Sort by descending size
+      if (sortBySizeAscending) {
+        return cardAValue - cardBValue; // Sort by ascending size
+      } else {
+        return cardBValue - cardAValue; // Sort by descending size
+      }
     }
   });
 
@@ -98,6 +137,13 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
   .catch((error) => {
     console.error("Error fetching data:", error);
   });
+
+
+
+
+
+
+
 
 
 // Function to get the value of a query parameter by its name
