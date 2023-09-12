@@ -50,6 +50,43 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
 
 
 
+// Inside your JavaScript code
+
+// Add an event listener to the search input
+const searchInput = document.querySelector(".search-box");
+searchInput.addEventListener("input", () => {
+  const searchQuery = searchInput.value.toLowerCase();
+  filterCards(searchQuery);
+});
+
+// Function to filter cards based on the search query
+function filterCards(query) {
+  const cardContainer = document.getElementById("card-container");
+  const cards = Array.from(cardContainer.querySelectorAll(".card"));
+
+  cards.forEach((card) => {
+    const cardText = card.textContent.toLowerCase(); // Get the text content of the card in lowercase
+    if (cardText.includes(query)) {
+      card.classList.remove("hidden"); // Remove the "hidden" class to show the card
+    } else {
+      card.classList.add("hidden"); // Add the "hidden" class to hide the card
+    }
+  });
+}
+
+
+// Initial loading of cards
+fetch("https://api.intern.d-tt.nl/api/houses", options)
+  .then((response) => response.json())
+  .then((response) => {
+    generateCards(response);
+
+    // Call this function to initially display all cards
+    filterCards(""); // Display all cards initially
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
 
 
 

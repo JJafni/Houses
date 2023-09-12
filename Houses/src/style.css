@@ -15,6 +15,11 @@ a {
     color: #333;
 }
 
+/* CSS to hide the card by default */
+.card.hidden {
+    display: none;
+  }
+
 .navbar {
     background-color: white;
     position: fixed;
