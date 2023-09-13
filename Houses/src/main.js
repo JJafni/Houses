@@ -39,6 +39,61 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
 
         cardContainer.appendChild(card);
       });
+
+      // Store the original card elements for filtering
+      const originalCards = [...cardContainer.querySelectorAll(".card")];
+
+      // Function to filter and display cards based on user input
+      function filterCards(searchTerm) {
+        // Clear the current card display
+        cardContainer.innerHTML = "";
+
+        // Filter the cards based on the user's input
+        const matchingCards = originalCards.filter((card) => {
+          const street = card.querySelector(".street").textContent.toLowerCase();
+          return street.includes(searchTerm.toLowerCase());
+        });
+
+        // Display matching cards or "not found" card
+        if (matchingCards.length === 0) {
+          displayNotFoundCard();
+        } else {
+          matchingCards.forEach((card) => {
+            cardContainer.appendChild(card);
+          });
+        }
+      }
+
+      // Function to display "not found" card
+      function displayNotFoundCard() {
+        const notFoundCard = document.createElement("div");
+        notFoundCard.className = "not-found-card";
+
+        notFoundCard.style.position = "fixed";
+        notFoundCard.style.top = "50%";
+        notFoundCard.style.left = "50%";
+        notFoundCard.style.transform = "translate(-50%, -50%)";
+        notFoundCard.style.textAlign = "center";
+      
+        notFoundCard.innerHTML = `
+          <div class="not-found-image">
+            <img src="path_to_not_found_image.jpg" alt="Not Found Image">
+          </div>
+          <div class="not-found-message">
+            <p>No result found.</p>
+            
+            <p>Try searching for something else.</p>
+          </div>
+        `;
+        cardContainer.appendChild(notFoundCard);
+      }
+
+      // Add an event listener to the search input field
+      const searchBox = document.getElementById("search-box");
+      searchBox.addEventListener("input", () => {
+        const searchTerm = searchBox.value.trim();
+        filterCards(searchTerm);
+      });
     }
 
     // Call the function to generate the cards with API response data
@@ -50,43 +105,7 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
 
 
 
-// Inside your JavaScript code
 
-// Add an event listener to the search input
-const searchInput = document.querySelector(".search-box");
-searchInput.addEventListener("input", () => {
-  const searchQuery = searchInput.value.toLowerCase();
-  filterCards(searchQuery);
-});
-
-// Function to filter cards based on the search query
-function filterCards(query) {
-  const cardContainer = document.getElementById("card-container");
-  const cards = Array.from(cardContainer.querySelectorAll(".card"));
-
-  cards.forEach((card) => {
-    const cardText = card.textContent.toLowerCase(); // Get the text content of the card in lowercase
-    if (cardText.includes(query)) {
-      card.classList.remove("hidden"); // Remove the "hidden" class to show the card
-    } else {
-      card.classList.add("hidden"); // Add the "hidden" class to hide the card
-    }
-  });
-}
-
-
-// Initial loading of cards
-fetch("https://api.intern.d-tt.nl/api/houses", options)
-  .then((response) => response.json())
-  .then((response) => {
-    generateCards(response);
-
-    // Call this function to initially display all cards
-    filterCards(""); // Display all cards initially
-  })
-  .catch((error) => {
-    console.error("Error fetching data:", error);
-  });
 
 
 
@@ -107,9 +126,9 @@ filterButtons.forEach((button) => {
 
       // Update the button text to indicate the sorting order
       if (sortByPriceAscending) {
-        button.textContent = "Sort by Price (OFF)";
+        button.textContent = "Sort by Price (Lowest)";
       } else {
-        button.textContent = "Sort by Price (ON)";
+        button.textContent = "Sort by Price (Highest)";
       }
     } else if (filterCriteria === "size") {
       // Toggle the sorting order for size
@@ -117,9 +136,9 @@ filterButtons.forEach((button) => {
 
       // Update the button text to indicate the sorting order
       if (sortBySizeAscending) {
-        button.textContent = "Sort by Size (OFF)";
+        button.textContent = "Sort by Size (Lowest)";
       } else {
-        button.textContent = "Sort by Size (ON)";
+        button.textContent = "Sort by Size (Highest)";
       }
     }
 
@@ -174,6 +193,9 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
   .catch((error) => {
     console.error("Error fetching data:", error);
   });
+
+
+
 
 
 
