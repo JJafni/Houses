@@ -239,18 +239,23 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
 <div class="card-2">
     <div class="card-content">
         <p class="property-street">${property.location.street}</p>
+        <hr>
+        <p class="property-price">€${property.price.toLocaleString("en-US")}</p>
+
+        <div class="info-house">
+        
         <div class="property-location">
             <p class="property-zip">${property.location.zip}</p>
             <p class="property-city">${property.location.city}</p>
         </div>
         <div class="property-price-container">
-            <p class="property-price">€${property.price.toLocaleString("en-US")}</p>
             <p class="property-size">${property.size} m2</p>
             <p class="property-construction-year">${property.constructionYear}</p>
         </div>
         <div class="property-details-container">
             <p class="property-bedrooms">${property.rooms.bedrooms} bedrooms</p>
             <p class="property-bathrooms">${property.rooms.bathrooms} bathrooms</p>
+        </div>
         </div>
     </div>
 </div>
@@ -353,4 +358,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
