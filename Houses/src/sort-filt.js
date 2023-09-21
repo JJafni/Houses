@@ -47,12 +47,3 @@ function sortCards(criteria) {
 }
 
 
-fetch("https://api.intern.d-tt.nl/api/houses", options)
-  .then((response) => response.json())
-  .then((data) => {
-    generateCards(data);
-    sortCards("price");
-  })
-  .catch((error) => {
-    console.error("Error fetching data:", error);
-  });
