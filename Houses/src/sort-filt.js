@@ -1,8 +1,7 @@
-// Inside your JavaScript code
 let sortByPriceAscending = true; // Track the current sorting order for price
 let sortBySizeAscending = true; // Track the current sorting order for size
 
-// Add an event listener to the filter buttons
+
 const filterButtons = document.querySelectorAll(".filter-button");
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -47,12 +46,12 @@ function sortCards(criteria) {
   });
 }
 
-// Initial loading of cards
+
 fetch("https://api.intern.d-tt.nl/api/houses", options)
   .then((response) => response.json())
   .then((data) => {
-    generateCards(data); // Call this function to generate the cards
-    sortCards("price"); // Sort by price initially
+    generateCards(data);
+    sortCards("price");
   })
   .catch((error) => {
     console.error("Error fetching data:", error);

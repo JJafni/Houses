@@ -20,7 +20,7 @@ a {
 .navbar {
     background-color: white;
     position: fixed;
-    top: -100%; /* Initially position it off-screen */
+    top: -100%;
     left: 0;
     width: 100%;
     display: flex;
@@ -30,12 +30,11 @@ a {
     padding: 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transition: top 1s ease; /* Add a smooth transition for the 'top' property */
+    transition: top 1s ease;
 }
 
-/* Add a class to trigger the slide-in animation */
 .navbar.slide-in {
-    top: 0; /* Slide it in from the top */
+    top: 0;
 }
 
 
@@ -99,62 +98,44 @@ a {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    /* Change to column layout for mobile */
     align-items: center;
     padding: 5px;
-    /* Add some padding for spacing */
     width: 90%;
-    /* Adjust width as needed for mobile */
     margin: 0 auto;
     margin-top: 20px;
     opacity: 0;
-    /* Start with opacity set to 0 to hide the card initially */
     transform: translateY(20px);
-    /* Start with a 20px downward translation */
     animation: slideIn 0.5s ease forwards;
-    /* Apply the animation */
 }
 
 @keyframes slideIn {
     to {
         opacity: 1;
-        /* At the end of the animation, set opacity to 1 to show the card */
         transform: translateY(0);
-        /* At the end of the animation, reset the translation to 0 */
     }
 }
 
 .card:hover {
     background-color: rgba(0, 0, 0, 0.1);
-    /* Darker background color on hover */
 }
 
 
-.card-image img {
-    width: 100%;
-    /* Make the image responsive within its container */
-    max-width: 250px;
-    /* Limit the maximum image width */
-}
 
 .card-content {
     text-align: center;
-    /* Center-align content for mobile */
 }
 
-/* Media query for screens with a minimum width of 768px (for larger screens) */
+
 @media (min-width: 1360px) {
     .card {
         flex-direction: row;
-        /* Revert to row layout for larger screens */
         width: 50%;
-        /* Adjust width for larger screens */
     }
 
     .card-image {
         margin-right: 20px;
-        /* Add spacing between image and content */
     }
+
 }
 
 
@@ -297,28 +278,34 @@ a {
     color: #333;
 }
 
-/* Base styles for .details-container */
+
 .details-container {
     flex: 1;
     border-left: 1px solid #ccc;
     padding-left: 20px;
 }
 
-.detail-container{
+.detail-container {
     display: flex;
     justify-content: center;
 }
 
-/* Media query for screens with a minimum width of 768px */
+
 @media (max-width: 1360px) {
     .details-container {
         border-left: none;
-        /* Remove the left border for larger screens */
         border-top: 1px solid #ccc;
         padding-left: 0;
-        /* Reset the left padding if needed */
+
     }
+
+    .card {
+        color: white;
+    }
+
+
 }
+
 
 h2 {
     font-size: 20px;
@@ -334,18 +321,17 @@ h2 {
 }
 
 .search-bar {
-    width: 0; /* Initially set the width to 0 to hide the search bar */
-    overflow: hidden;
-    transition: width 0.5s ease; /* Add a smooth transition for the width property */
+    opacity: 0;
+    transform: translateY(0px);
+    animation: slideIn 0.5s ease forwards;
 }
 
-/* Add a class to expand the search bar */
-.search-bar.expanded {
-    width: 100%; /* Adjust the width as needed */
-    display: flex;
-    justify-content: center;
+@keyframes spawnIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-
 
 .search-box {
     border: none;
@@ -417,10 +403,8 @@ h2 {
     text-align: left;
 }
 
-/* CSS for the modal */
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -440,7 +424,6 @@ h2 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Close button */
 .close {
     color: #aaa;
     float: right;
@@ -456,17 +439,13 @@ h2 {
     cursor: pointer;
 }
 
-/* Default styles for the .image-not-found element */
 .image-not-found {
     width: 400px;
 }
 
-/* Media query for screens with a maximum width of 768px */
 @media (max-width: 768px) {
     .image-not-found {
         width: 50%;
-        /* Adjust the percentage as needed */
         max-width: 400px;
-        /* Set a maximum width */
     }
 }

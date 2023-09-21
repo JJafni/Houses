@@ -39,7 +39,7 @@ function getQueryParam(parameterName) {
   
   <!-- Card containing property details -->
   <div class="card-2">
-      <div class="card-content">
+      <div class="card-content-2">
           <p class="property-street">${property.location.street}</p>
           <hr>
           <p class="property-price">€${property.price.toLocaleString("en-US")}</p>
