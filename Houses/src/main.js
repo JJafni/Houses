@@ -23,7 +23,7 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
 
         card.innerHTML = `
         <div class="card-image">
-            <img src="${property.image}" alt="Card Image" style="width: 200px;">
+            <img src="${property.image}" alt="Card Image" style="width: 250px;">
         </div>
         <div class="card-content">
             <p class="street">${property.location.street}</p>
@@ -32,8 +32,8 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
         <div class="details-container">
             <p class="city">${property.location.city}</p>
             <p class="zip">${property.location.zip}</p>
-            <p class="bedrooms">${property.rooms.bedrooms} bedrooms</p>
-            <p class="bathrooms">${property.rooms.bathrooms} bathrooms</p>
+            <p class="bedrooms">bedrooms: ${property.rooms.bedrooms}</p>
+            <p class="bathrooms">bathrooms: ${property.rooms.bathrooms}</p>
         </div>
     `;
 
@@ -74,10 +74,10 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
         notFoundCard.style.left = "50%";
         notFoundCard.style.transform = "translate(-50%, -50%)";
         notFoundCard.style.textAlign = "center";
-      
+
         notFoundCard.innerHTML = `
           <div class="not-found-image">
-            <img src="path_to_not_found_image.jpg" alt="Not Found Image">
+            <img class="image-not-found" src="https://www.freepnglogos.com/uploads/house-png/house-png-commonwealth-magazine-18.png" alt="Not Found Image">
           </div>
           <div class="not-found-message">
             <p>No result found.</p>
@@ -270,6 +270,19 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
     console.error("Error fetching data:", error);
   });
 
+
+
+
+
+
+
+
+  // Select the form element
+const houseForm = document.getElementById("houseForm");
+
+// Select the list where added houses will be displayed
+const streetList = document.getElementById("streetList");
+
 // Listen for form submission
 houseForm.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -278,9 +291,9 @@ houseForm.addEventListener("submit", function (e) {
   const street = document.getElementById("street").value;
   const city = document.getElementById("city").value;
   const zip = document.getElementById("zip").value;
-  const price = document.getElementById("price").value;
-  const bedrooms = document.getElementById("bedrooms").value;
-  const bathrooms = document.getElementById("bathrooms").value;
+  const price = parseFloat(document.getElementById("price").value); // Convert to float
+  const bedrooms = parseInt(document.getElementById("bedrooms").value); // Convert to integer
+  const bathrooms = parseInt(document.getElementById("bathrooms").value); // Convert to integer
 
   // Create a new house object
   const newHouse = {
@@ -295,7 +308,7 @@ houseForm.addEventListener("submit", function (e) {
   // Add the new house to local storage
   saveHouse(newHouse);
 
-  // Display the house
+  // Display the house in the list
   displayHouse(newHouse);
 
   // Clear the form
@@ -338,23 +351,7 @@ window.addEventListener("load", displayHousesFromLocalStorage);
 function displayHouse(house) {
   const listItem = document.createElement("p");
   listItem.innerHTML = `
-        ${house.street}
-        ${house.city}
-        ${house.zip}
-        ${house.price}
-      
+        ${house.street}, ${house.city}, ${house.zip}, Price: €${house.price}, Bedrooms: ${house.bedrooms}, Bathrooms: ${house.bathrooms}
     `;
   streetList.appendChild(listItem);
 }
-
-// Add this script if you want to highlight the active link using JavaScript
-document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function () {
-      navLinks.forEach((navLink) => navLink.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
-});

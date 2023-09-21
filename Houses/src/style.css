@@ -86,18 +86,50 @@ a {
     color: #007bff;
 }
 
+/* Base styles for mobile devices */
 .card {
     border: 0px solid #ccc;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    /* Change to column layout for mobile */
     align-items: center;
-    padding: 0px;
-    width: 50%;
+    padding: 10px;
+    /* Add some padding for spacing */
+    width: 90%;
+    /* Adjust width as needed for mobile */
     margin: 0 auto;
     margin-top: 20px;
 }
+
+.card-image img {
+    width: 100%;
+    /* Make the image responsive within its container */
+    max-width: 250px;
+    /* Limit the maximum image width */
+}
+
+.card-content {
+    text-align: center;
+    /* Center-align content for mobile */
+}
+
+/* Media query for screens with a minimum width of 768px (for larger screens) */
+@media (min-width: 1000px) {
+    .card {
+        flex-direction: row;
+        /* Revert to row layout for larger screens */
+        width: 50%;
+        /* Adjust width for larger screens */
+    }
+
+    .card-image {
+        margin-right: 20px;
+        /* Add spacing between image and content */
+    }
+}
+
 
 .card-2 {
     border: 0px solid #ccc;
@@ -108,7 +140,7 @@ a {
     align-items: center;
     padding: 0px;
     width: 50%;
-  
+
 }
 
 .card-3 {
@@ -212,7 +244,8 @@ a {
     margin-top: 0px;
 }
 
-.property-zip, .property-city {
+.property-zip,
+.property-city {
     color: #777;
 }
 
@@ -222,7 +255,8 @@ a {
     color: #3498db;
 }
 
-.property-size, .property-construction-year {
+.property-size,
+.property-construction-year {
     color: #555;
     margin-top: 5px;
 }
@@ -231,12 +265,25 @@ a {
     margin-top: 10px;
 }
 
-.property-bedrooms, .property-bathrooms {
+.property-bedrooms,
+.property-bathrooms {
     color: #333;
 }
 
+/* Base styles for .details-container */
 .details-container {
     flex: 1;
+    border-left: 1px solid #ccc;
+    padding-left: 20px;
+}
+
+/* Media query for screens with a minimum width of 768px */
+@media (max-width: 1000px) {
+    .details-container {
+        border-left: none; /* Remove the left border for larger screens */
+        border-top: 1px solid #ccc;
+        padding-left: 0; /* Reset the left padding if needed */
+    }
 }
 
 h2 {
@@ -308,8 +355,8 @@ h2 {
 }
 
 .card-image img {
-   border-radius: 6px;
-   margin: 10px;
+    border-radius: 4px;
+    margin: 10px;
 }
 
 .card-content {
@@ -324,13 +371,14 @@ h2 {
     text-align: center;
 }
 
-.info-house{
+.info-house {
     text-align: left;
 }
 
 /* CSS for the modal */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -339,30 +387,44 @@ h2 {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background-color: #fff;
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Close button */
-  .close {
+}
+
+/* Close button */
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }
-  
+}
+
+/* Default styles for the .image-not-found element */
+.image-not-found {
+    width: 400px;
+}
+
+/* Media query for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+    .image-not-found {
+        width: 50%;
+        /* Adjust the percentage as needed */
+        max-width: 400px;
+        /* Set a maximum width */
+    }
+}
