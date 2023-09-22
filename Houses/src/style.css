@@ -3,6 +3,8 @@ body {
     padding: 0;
     font-family: myFont;
     font-weight: lighter;
+    letter-spacing: 1px;
+    /* Add 2 pixels of space between characters */
 }
 
 @font-face {
@@ -20,14 +22,14 @@ a {
 .navbar {
     background-color: white;
     position: fixed;
-    top: -100%;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     transition: top 1s ease;
@@ -94,7 +96,7 @@ a {
 
 .card {
     border: 0px solid #ccc;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: solid 1px #ccc;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -106,7 +108,10 @@ a {
     opacity: 0;
     transform: translateY(20px);
     animation: slideIn 0.5s ease forwards;
+    transition: background-color 0.3s ease;
+    /* Smooth transition over 0.3 seconds with ease-in-out easing */
 }
+
 
 @keyframes slideIn {
     to {
@@ -205,6 +210,23 @@ a {
     gap: 20px;
 }
 
+.card-container-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-top: 120px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 0px 5px 5px 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    gap: 20px;
+    margin-left: auto; /* Add this to center the container horizontally */
+    margin-right: auto; /* Add this to center the container horizontally */
+  }
+  
+
 .card-image-2 img {
     max-width: 100%;
     height: auto;
@@ -299,9 +321,33 @@ a {
 
     }
 
+    .search-button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .navbar {
+       display: flex;
+       justify-content: center;
+       box-shadow: none;
+    }
+
     .card {
         color: white;
     }
+
+   
 
 
 }
@@ -357,6 +403,7 @@ h2 {
 }
 
 .filter-button {
+    border-radius: 3px;
     padding: 10px 20px;
     background-color: #e85444;
     color: #fff;
@@ -364,6 +411,12 @@ h2 {
     font-size: 16px;
     font-family: myFont;
     cursor: pointer;
+}
+
+.filter-buttons{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .filter-button.active {

@@ -17,55 +17,70 @@ fetch("https://api.intern.d-tt.nl/api/houses", options)
 
       // Inside the generateCards function
 
-      // Function to set the background image and adjust its brightness based on screen width
       function setCardBackgroundImage(property, card) {
         const mediaQuery1360px = window.matchMedia("(max-width: 1360px)");
-
+      
         function updateCardBackground() {
           if (mediaQuery1360px.matches) {
-            // Apply the background image for screens with a minimum width of 1360px
+            //card content spcaebetween
+            
+            // Apply the background image for screens with a maximum width of 1360px
             card.style.backgroundImage = `url(${property.image})`;
-            card.style.backgroundSize = "cover"; // Optional: To ensure the image covers the entire card
+            card.style.backgroundSize = "150%"; // Optional: To ensure the image covers the entire card
+            card.style.backgroundPositionY = "center";
+            card.style.boxShadow = "rgba(0, 0, 0, 0.4) 0px 0px 0px 200px inset";
           } else {
-            // Remove the background image for screens smaller than 1360px
+            // Remove the background image for screens larger than 1360px
             card.style.backgroundImage = "none";
+            card.style.boxShadow = "none";
           }
         }
-
+      
         // Initial call to set the background based on the initial screen width
         updateCardBackground();
-
+      
         // Add an event listener to update the background when the window is resized
         mediaQuery1360px.addListener(updateCardBackground);
+      
+        // Add scroll event to move the background image
+        window.addEventListener("scroll", function () {
+          if (mediaQuery1360px.matches) {
+            // Calculate the background position based on the scroll position
+            const scrollPosition = window.scrollY;
+            card.style.backgroundPositionY = -scrollPosition / 5 + "px";
+          }
+        });
       }
-
+      
       // Inside the generateCards function
       data.forEach((property, index) => {
         const card = document.createElement("a");
         card.className = "card";
         card.href = `detail.html?propertyIndex=${index}`;
-
+      
         // Call the function to set the background image and adjust its brightness
         setCardBackgroundImage(property, card);
-
+      
         card.innerHTML = `
-  <div class="card-content">
-      <p class="street">${property.location.street}</p>
-      <p class="price">€${property.price.toLocaleString("en-US")}</p>
-  </div>
-  <div class="details-container">
-      <p class="city">${property.location.city}</p>
-      <p class="zip">${property.location.zip}</p>
-      <p class="bedrooms">bedrooms: ${property.rooms.bedrooms}</p>
-      <p class="bathrooms">bathrooms: ${property.rooms.bathrooms}</p>
-  </div>
-  `;
-
-
+          <div class="card-content">
+              <p class="street">${property.location.street}</p>
+              <p class="price">€${property.price.toLocaleString("en-US")}</p>
+          </div>
+          <div class="details-container">
+              <p class="city">${property.location.city}</p>
+              <p class="zip">${property.location.zip}</p>
+              <p class="bedrooms">bedrooms: ${property.rooms.bedrooms}</p>
+              <p class="bathrooms">bathrooms: ${property.rooms.bathrooms}</p>
+          </div>
+        `;
+      
         cardContainer.appendChild(card);
       });
+      
 
 
+
+  
 
 
       // Store the original card elements for filtering

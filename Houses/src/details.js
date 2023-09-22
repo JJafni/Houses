@@ -27,7 +27,7 @@ function getQueryParam(parameterName) {
       const detailContainer = document.getElementById("detail-container");
       detailContainer.innerHTML = `
       
-      <div class="card-container">
+      <div class="card-container-2">
       <!-- Card containing property image and description -->
       <div class="card-image-2">
           <img src="${property.image}" alt="Card Image">
