@@ -1,4 +1,3 @@
-
 const options = {
     method: "GET",
     headers: {
@@ -23,44 +22,48 @@ function getQueryParam(parameterName) {
     .then((data) => {
       const property = data[propertyIndex];
   
+
+      
       // Display the card's details on the page
       const detailContainer = document.getElementById("detail-container");
       detailContainer.innerHTML = `
       
       <div class="card-container-2">
-      <!-- Card containing property image and description -->
-      <div class="card-image-2">
+      <!-- Card image and property details -->
+      <div class="card-image-details">
+        <div class="card-image-2">
           <img src="${property.image}" alt="Card Image">
+        </div>
+        <!-- Card details -->
+        <div class="card-2">
+          <div class="card-content-2">
+            <p class="property-street">${property.location.street}</p>
+            <hr>
+            <p class="property-price">€${property.price.toLocaleString("en-US")}</p>
+            <!-- Property details -->
+            <div class="info-house">
+              <div class="property-location">
+                <p class="property-zip">${property.location.zip}</p>
+                <p class="property-city">${property.location.city}</p>
+              </div>
+              <div class="property-price-container">
+                <p class="property-size">${property.size} m2</p>
+                <p class="property-construction-year">${property.constructionYear}</p>
+              </div>
+              <div class="property-details-container">
+                <p class="property-bedrooms">bedrooms: ${property.rooms.bedrooms} </p>
+                <p class="property-bathrooms">bathrooms: ${property.rooms.bathrooms} </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <!-- Card description -->
       <div class="card-description">
-          ${property.description}
+        ${property.description}
       </div>
-  
-  
-  <!-- Card containing property details -->
-  <div class="card-2">
-      <div class="card-content-2">
-          <p class="property-street">${property.location.street}</p>
-          <hr>
-          <p class="property-price">€${property.price.toLocaleString("en-US")}</p>
-  
-          <div class="info-house">
-          
-          <div class="property-location">
-              <p class="property-zip">${property.location.zip}</p>
-              <p class="property-city">${property.location.city}</p>
-          </div>
-          <div class="property-price-container">
-              <p class="property-size">${property.size} m2</p>
-              <p class="property-construction-year">${property.constructionYear}</p>
-          </div>
-          <div class="property-details-container">
-              <p class="property-bedrooms">${property.rooms.bedrooms} bedrooms</p>
-              <p class="property-bathrooms">${property.rooms.bathrooms} bathrooms</p>
-          </div>
-          </div>
-      </div>
-  </div>
+    </div>
+    
   `;
     })
     .catch((error) => {
